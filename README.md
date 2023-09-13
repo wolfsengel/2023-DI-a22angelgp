@@ -2,7 +2,7 @@
 ## Desenvolvemento de Interfaces
 
 ### Nombre:
-John Doe
+Ángel Gómez Prol
 
 ### Centro Educativo:
 - IES San Clemente
