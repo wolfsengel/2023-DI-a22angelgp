@@ -1,21 +1,16 @@
 # 2023-DI-a22angelgp
 ## Desenvolvemento de Interfaces
 
-## Nombre:
+### Nombre:
 John Doe
 
-## Centro Educativo:
-Universidad Ejemplo
+### Centro Educativo:
+- IES San Clemente
 
-## Especialización:
-Ingeniería de Software
+### Especialización:
+- Desarrollo de aplicaciones multiplataforma
 
-## Contacto:
-- Correo Electrónico: johndoe@email.com
-- Teléfono: (123) 456-7890
-
-## Redes Sociales:
-- LinkedIn: [John Doe](https://www.linkedin.com/in/johndoe)
-- Twitter: [@johndoe](https://twitter.com/johndoe)
+### Contacto:
+- Correo Electrónico: a22angelgp@iessanclemente.net
 
 ¡No dudes en contactarme para cualquier consulta o colaboración!
