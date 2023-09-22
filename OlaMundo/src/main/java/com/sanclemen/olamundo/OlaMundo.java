@@ -1,8 +1,5 @@
 package com.sanclemen.olamundo;
 
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
-
 /**
  *
  * @author a22angelgp
