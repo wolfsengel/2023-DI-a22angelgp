@@ -13,19 +13,15 @@ import javax.swing.WindowConstants;
 public class OlaMundo {
 
     public static void main(String[] args) {
-// Schedule a job for the event-dispatch thread:
-// creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-// Crea un novo frame co título especificado
                 JFrame frame = new JFrame("Ola Mundo!");
-// Establece o tamaño
                 frame.setSize(600, 500);
-// Establece a funcionalidade ao cerrar o frame (pulsar X)
-// saír do programa
                 frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-// Fai o frame visible (por defecto é invisible)
+                //frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                //frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                //frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
                 frame.setVisible(true);
             }
         });
