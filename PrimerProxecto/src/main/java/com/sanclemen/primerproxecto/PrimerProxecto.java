@@ -9,7 +9,6 @@ public class PrimerProxecto {
         double res = 0;
         String operacion;
         boolean comprobar;
-        comprobar = false;
 
         do {
             String numero1;
@@ -49,9 +48,12 @@ public class PrimerProxecto {
             do {
                 comprobar = true;
                 switch (operacion) {
-                    case "+" -> res = n1 + n2;
-                    case "-" -> res = n1 - n2;
-                    case "x", "X" -> res = n1 * n2;
+                    case "+" ->
+                        res = n1 + n2;
+                    case "-" ->
+                        res = n1 - n2;
+                    case "x", "X" ->
+                        res = n1 * n2;
                     case "/" -> {
                         /* Por tal de evitar errores y añadir números complejos, si el usuario coloca 0 como segundo número, se piensa entonces que el denominador es 0, y por ello añado una condicional que lo verifique, y para hacer el codigo mas dinamico y no solo añadir un 1, le vuelvo a preguntar al usuario que añada un número distinto, podría volver a colocar 0, y es la razón por la que se encuentra en un ciclo, así que mientras n2 sea 0, el código seguirá ejecutando hasta que ponga otro. */
                         while (n2 == 0) {
@@ -66,7 +68,8 @@ public class PrimerProxecto {
                         }
                         res = n1 / n2;
                     }
-                    case "*" -> res = Math.pow(n1, n2);
+                    case "*" ->
+                        res = Math.pow(n1, n2);
                     case "%" -> {
                         while (n2 == 0) {
                             do {
@@ -100,6 +103,6 @@ public class PrimerProxecto {
                 }
             } while (comprobar != true);
         } while (operacion.equals("s") || operacion.equals("S"));
-        
+
     }
 }
