@@ -1,31 +1,51 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.sanclemen.olamundo;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author a22angelgp
- */
 public class MainFrame extends JFrame {
 
     private JTextArea textArea;
     private JButton aceptarButton;
 
     public MainFrame() {
-        super("Hola mundo");
+        super("Alan rum4n0");
+
+        // Configure the layout manager
         setLayout(new BorderLayout());
+
+        // Create the text area and button
         textArea = new JTextArea();
-        aceptarButton = new JButton("Aceptar");
+        aceptarButton = new JButton("Si");
+
+        // Add the text area to the center and the button to the bottom
         add(textArea, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
-        setSize(600, 400);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
 
+        // Create a JLabel with the desired properties
+        JLabel etiqueta = new JLabel("Ángel GP");
+        etiqueta.setFont(new Font("Arial", Font.ITALIC, 20));
+        etiqueta.setHorizontalAlignment(JLabel.CENTER);
+
+        Dimension labelSize = new Dimension(300, 150);
+        etiqueta.setPreferredSize(labelSize);
+
+        add(etiqueta, BorderLayout.PAGE_START);
+
+        setSize(600, 400);
+
+        setResizable(false);
+
+        setLocationRelativeTo(null);
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new MainFrame();
+        });
     }
 }
