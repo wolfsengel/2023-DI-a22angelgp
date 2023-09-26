@@ -1,6 +1,9 @@
 package com.sanclemen.olamundo;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
@@ -18,17 +21,21 @@ public class MainFrame extends JFrame {
         textArea = new JTextArea();
         aceptarButton = new JButton("Si");
 
-        // Add the text area to the center and the button to the bottom
+        aceptarButton = new JButton("Aceptar");
+        aceptarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                System.out.println("Boton pulsado");
+            }
+        });
+
         add(textArea, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
 
-        // Create a JLabel with the desired properties
         JLabel etiqueta = new JLabel("Ángel GP");
         etiqueta.setFont(new Font("Arial", Font.ITALIC, 20));
         etiqueta.setHorizontalAlignment(JLabel.CENTER);
-
-        Dimension labelSize = new Dimension(300, 150);
-        etiqueta.setPreferredSize(labelSize);
+        etiqueta.setPreferredSize(new Dimension(300, 150));
 
         add(etiqueta, BorderLayout.PAGE_START);
 
