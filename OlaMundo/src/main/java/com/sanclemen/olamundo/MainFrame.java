@@ -23,9 +23,12 @@ public class MainFrame extends JFrame {
 
         aceptarButton = new JButton("Aceptar");
         aceptarButton.addActionListener(new ActionListener() {
+            int num = 1;
+
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                System.out.println("Boton pulsado");
+                System.out.println("Boton pulsado " + num + " veces");
+                num++;
             }
         });
 
