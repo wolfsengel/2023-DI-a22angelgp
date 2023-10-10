@@ -38,6 +38,7 @@ public class exec1 {
 
         JTextArea textArea = new JTextArea();
         frame.add(new JScrollPane(textArea), BorderLayout.CENTER);
+        textArea.setLineWrap(true);
 
         JLabel footerLabel = new JLabel("Moloko Software");
         footerLabel.setHorizontalAlignment(SwingConstants.CENTER);
