@@ -11,6 +11,7 @@ public class exec2 {
         JFrame frame = new JFrame("Exemplo de CardLayout");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
+        frame.setLocationRelativeTo(null);
 
         JLabel titleLabel = new JLabel("Título da Interface");
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
