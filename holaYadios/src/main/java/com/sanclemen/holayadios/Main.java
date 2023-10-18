@@ -12,10 +12,10 @@ public class Main extends JFrame {
 
     private HolaYadios textPanel;
     private final top top;
-    private Formpanel formpanel;
+    private final Formpanel formpanel;
+    //test
+    private final ListPanel listpanel;
     private final JButton aceptarButton;
-    boolean hola = false;
-    String palabro = "a";
 
     public Main() {
         super("Ola Mundo!");
@@ -24,29 +24,24 @@ public class Main extends JFrame {
 
         textPanel = new HolaYadios();
         top = new top();
-        top.holabutton.addActionListener((ActionEvent arg0) -> {
-            hola = true;
+        top.setStringListener((StringEvent se) -> {
+            textPanel.appendText(se.getText());
         });
 
-        top.adiosbutton.addActionListener((ActionEvent arg0) -> {
-            hola = false;
-        });
+        //test
+        listpanel = new ListPanel();
 
         formpanel = new Formpanel();
-
-        formpanel.okButton.addActionListener((ActionEvent arg0) -> {
-            String nombre = formpanel.nameField.getText();
-            textPanel.appendText("Nombre: " + nombre + "\n");
-            String trabajo = formpanel.occupationField.getText();
-            textPanel.appendText("Trabajo: " + trabajo + "\n");
+        formpanel.setStringListener((StringEvent se) -> {
+            textPanel.appendText(se.getText());
         });
-
         aceptarButton = new JButton("Aceptar");
 
         aceptarButton.addActionListener((ActionEvent arg0) -> {
-            palabro = hola ? "Hola" : "Adios";
-            textPanel.appendText(palabro + "\n");
+            textPanel.appendText("\nAceptado");
         });
+        //test
+        formpanel.add(listpanel);
         add(formpanel, BorderLayout.WEST);
         add(top, BorderLayout.PAGE_START);
         add(textPanel, BorderLayout.CENTER);

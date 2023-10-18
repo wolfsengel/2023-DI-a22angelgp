@@ -5,6 +5,7 @@
 package com.sanclemen.holayadios;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Formpanel extends JPanel {
@@ -16,6 +17,29 @@ public class Formpanel extends JPanel {
     JLabel occupationLabel;
     JTextField occupationField;
     JButton okButton;
+
+    StringListener stringListener;
+
+    public void setStringListener(StringListener stringListener) {
+        this.stringListener = stringListener;
+    }
+
+    ActionListener al = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton clickedButton = (JButton) e.getSource();
+
+            if (clickedButton == okButton) {
+                String nombre = nameField.getText();
+                String trabajo = occupationField.getText();
+                if (stringListener != null) {
+                    StringEvent se = new StringEvent(this, "Nombre: " + nombre + " -> Trabajo: " + trabajo + "\n");
+                    stringListener.textEmited(se);
+                }
+
+            }
+        }
+    };
 
     Formpanel() {
         panel = new JPanel(new GridBagLayout());
@@ -34,6 +58,7 @@ public class Formpanel extends JPanel {
 
         // Botón "Ok"
         okButton = new JButton("Ok");
+        okButton.addActionListener(al);
 
         // Configuración de los componentes
         constraints.anchor = GridBagConstraints.EAST;
