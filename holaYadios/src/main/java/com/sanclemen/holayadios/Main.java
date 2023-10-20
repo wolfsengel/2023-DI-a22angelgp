@@ -46,7 +46,7 @@ public class Main extends JFrame {
         add(top, BorderLayout.PAGE_START);
         add(textPanel, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
-        setSize(600, 500);
+        setSize(1000, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

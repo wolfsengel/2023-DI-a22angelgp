@@ -24,17 +24,29 @@ public class ListPanel extends JPanel {
         listaCadenas.setSelectedIndex(0);
 
         textField = new JTextField(20);
-        btnAgregar = new JButton("Añadir");
-        btnBorrar = new JButton("Borrar");
-        btnBorrar.setEnabled(false);
+        btnAgregar = new JButton("Add");
+        btnBorrar = new JButton("Erase");
+        btnAgregar.setEnabled(false);
+
+        listModel.addElement("Alan papichulo");
+        listModel.addElement("Ivan el Sultan");
+        listModel.addElement("Vladdy Daddy");
+
+        listaCadenas.setSelectedIndex(0);
 
         setLayout(new BorderLayout());
         add(new JScrollPane(listaCadenas), BorderLayout.CENTER);
 
         JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS)); // Usar BoxLayout para alinear los componentes horizontalmente
+
         panel.add(btnAgregar);
+        panel.add(Box.createRigidArea(new Dimension(5, 0))); // Espacio rígido para separar los componentes
+        panel.add(new JSeparator(SwingConstants.VERTICAL)); // Línea separadora vertical
+        panel.add(Box.createRigidArea(new Dimension(5, 0))); // Más espacio rígido
         panel.add(textField);
         panel.add(btnBorrar);
+
         add(panel, BorderLayout.SOUTH);
 
         // Manejar eventos del botón "Añadir"
