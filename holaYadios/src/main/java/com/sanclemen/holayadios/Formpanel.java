@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.sanclemen.holayadios;
 
 import java.awt.*;
@@ -16,6 +12,8 @@ public class Formpanel extends JPanel {
     JTextField nameField;
     JLabel occupationLabel;
     JTextField occupationField;
+    JLabel ageLabel;
+    ListPanel ageField;
     JButton okButton;
 
     StringListener stringListener;
@@ -56,6 +54,10 @@ public class Formpanel extends JPanel {
         occupationLabel = new JLabel("Occupation:");
         occupationField = new JTextField(13);
 
+        //Etiqueta y campo para la edad
+        ageLabel = new JLabel("Age:");
+        ageField = new ListPanel("Under 18", "18 to 65", "65 and over");
+
         // Botón "Ok"
         okButton = new JButton("Ok");
         okButton.addActionListener(al);
@@ -80,10 +82,20 @@ public class Formpanel extends JPanel {
         constraints.gridx = 1;
         panel.add(occupationField, constraints);
 
-        // Agregar el botón "Ok"
+        //Agregar la etiqueta age y el campo de edad
         constraints.gridx = 0;
         constraints.gridy = 2;
-        constraints.gridwidth = 2;
+
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        panel.add(ageLabel, constraints);
+
+        constraints.gridx = 1;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        panel.add(ageField, constraints);
+
+        // Agregar el botón "Ok"
+        constraints.gridx = 0;
+        constraints.gridy = 4;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(okButton, constraints);
         add(panel);

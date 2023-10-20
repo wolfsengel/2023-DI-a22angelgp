@@ -13,8 +13,6 @@ public class Main extends JFrame {
     private HolaYadios textPanel;
     private final top top;
     private final Formpanel formpanel;
-    //test
-    private final ListPanel listpanel;
     private final JButton aceptarButton;
 
     public Main() {
@@ -28,9 +26,6 @@ public class Main extends JFrame {
             textPanel.appendText(se.getText());
         });
 
-        //test
-        listpanel = new ListPanel();
-
         formpanel = new Formpanel();
         formpanel.setStringListener((StringEvent se) -> {
             textPanel.appendText(se.getText());
@@ -40,13 +35,11 @@ public class Main extends JFrame {
         aceptarButton.addActionListener((ActionEvent arg0) -> {
             textPanel.appendText("\nAceptado");
         });
-        //test
-        formpanel.add(listpanel);
         add(formpanel, BorderLayout.WEST);
         add(top, BorderLayout.PAGE_START);
         add(textPanel, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
-        setSize(1000, 500);
+        setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -57,5 +50,4 @@ public class Main extends JFrame {
         });
 
     }
-
 }
