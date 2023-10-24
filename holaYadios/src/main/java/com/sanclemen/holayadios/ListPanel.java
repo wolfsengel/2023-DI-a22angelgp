@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class ListPanel extends JPanel {
 
-    private final JList<String> listaCadenas;
-    private final DefaultListModel<String> listModel;
+    final JList<String> listaCadenas;
+    final DefaultListModel<String> listModel;
 
     public ListPanel(String elemen1, String elemen2, String elemen3) {
         listModel = new DefaultListModel<>();

@@ -14,6 +14,8 @@ public class Formpanel extends JPanel {
     JTextField occupationField;
     JLabel ageLabel;
     ListPanel ageField;
+    JLabel employedLabel;
+    ComboPanel employedField;
     JButton okButton;
 
     StringListener stringListener;
@@ -25,17 +27,11 @@ public class Formpanel extends JPanel {
     ActionListener al = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JButton clickedButton = (JButton) e.getSource();
-
-            if (clickedButton == okButton) {
-                String nombre = nameField.getText();
-                String trabajo = occupationField.getText();
-                if (stringListener != null) {
-                    StringEvent se = new StringEvent(this, "Nombre: " + nombre + " -> Trabajo: " + trabajo + "\n");
-                    stringListener.textEmited(se);
-                }
-
-            }
+            String nombre = nameField.getText();
+            Integer edad = ageField.listaCadenas.getSelectedIndex();
+            String trabajo = occupationField.getText();
+            StringEvent se = new StringEvent(this, nombre + ": " + trabajo + ": " + edad + ": " + employedField.comboBox.getSelectedItem() + "\n");
+            stringListener.textEmited(se);
         }
     };
 
@@ -57,6 +53,10 @@ public class Formpanel extends JPanel {
         //Etiqueta y campo para la edad
         ageLabel = new JLabel("Age:");
         ageField = new ListPanel("Under 18", "18 to 65", "65 and over");
+
+        //Etiqueta y campo de employment
+        employedLabel = new JLabel("Employment:");
+        employedField = new ComboPanel();
 
         // Botón "Ok"
         okButton = new JButton("Ok");
@@ -92,6 +92,17 @@ public class Formpanel extends JPanel {
         constraints.gridx = 1;
         constraints.anchor = GridBagConstraints.NORTHWEST;
         panel.add(ageField, constraints);
+
+        //Agregar la etiqueta Employment y el campo del combobox
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        panel.add(employedLabel, constraints);
+
+        constraints.gridx = 1;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        panel.add(employedField, constraints);
 
         // Agregar el botón "Ok"
         constraints.gridx = 0;
