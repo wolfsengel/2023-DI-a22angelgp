@@ -16,6 +16,10 @@ public class Formpanel extends JPanel {
     ListPanel ageField;
     JLabel employedLabel;
     ComboPanel employedField;
+    JLabel casillaLabel;
+    JCheckBox casillaUS;
+    JLabel taxLabel;
+    JTextField taxField;
     JButton okButton;
 
     StringListener stringListener;
@@ -61,7 +65,15 @@ public class Formpanel extends JPanel {
 
         //Etiqueta y campo de employment
         employedLabel = new JLabel("Employment:");
+        casillaUS = new JCheckBox();
+
+        //Etiqueta y campo de uscitizen
+        casillaLabel = new JLabel("US Citizen:");
         employedField = new ComboPanel();
+
+        //Etiqueta y campo de uscitizen
+        taxLabel = new JLabel("Tax ID:");
+        taxField = new JTextField();
 
         // Botón "Ok"
         okButton = new JButton("Ok");
@@ -109,12 +121,35 @@ public class Formpanel extends JPanel {
         constraints.anchor = GridBagConstraints.NORTHWEST;
         panel.add(employedField, constraints);
 
-        // Agregar el botón "Ok"
+        //Agregar la etiqueta UScitizen y el campo del jcheckbox
         constraints.gridx = 0;
         constraints.gridy = 4;
+
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        panel.add(casillaLabel, constraints);
+
+        constraints.gridx = 1;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        panel.add(casillaUS, constraints);
+
+        //Agregar la etiqueta Tax ID y el campo del textfield
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        panel.add(taxLabel, constraints);
+
+        constraints.gridx = 1;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        panel.add(taxField, constraints);
+
+        // Agregar el botón "Ok"
+        constraints.gridx = 0;
+        constraints.gridy = 6;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(okButton, constraints);
         add(panel);
+
         // Hacer visible la ventana
         setVisible(true);
     }
