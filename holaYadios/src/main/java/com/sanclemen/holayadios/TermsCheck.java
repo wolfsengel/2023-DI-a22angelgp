@@ -4,34 +4,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-/**
- *
- * @author a22angelgp
- */
-public class TermsCheck extends JPanel {
+public class TermsCheck extends JOptionPane {
 
     JCheckBox casilla;
     JButton aceptarTerms;
-    JTextField quest;
 
     public TermsCheck() {
-        casilla = new JCheckBox("Accept");
-        aceptarTerms = new JButton("Continuar");
-        quest = new JTextField("Terms and Conditions are OKie-dOKie with you?");
 
+        casilla = new JCheckBox("I accept the Terms and Conditions");
+        aceptarTerms = new JButton("Accept");
         aceptarTerms.setEnabled(false);
 
-        ActionListener al = new ActionListener() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(casilla);
+        panel.add(aceptarTerms);
+
+        casilla.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                aceptarTerms.setEnabled(true);
-
+                aceptarTerms.setEnabled(casilla.isSelected());
             }
-        };
-        casilla.addActionListener(al);
-        add(casilla);
-        add(aceptarTerms);
-        add(quest);
+        });
+
+        add(panel);
+        setVisible(true);
     }
 }

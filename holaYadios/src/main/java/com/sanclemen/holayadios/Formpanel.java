@@ -27,6 +27,11 @@ public class Formpanel extends JPanel {
     ActionListener al = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            JOptionPane optionPane = new TermsCheck();
+            JDialog dialog = optionPane.createDialog("Términos y servicios");
+            dialog.setVisible(true);
+
             String nombre = nameField.getText();
             Integer edad = ageField.listaCadenas.getSelectedIndex();
             String trabajo = occupationField.getText();
