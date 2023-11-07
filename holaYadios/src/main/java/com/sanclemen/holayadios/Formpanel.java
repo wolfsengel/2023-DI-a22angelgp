@@ -39,12 +39,14 @@ public class Formpanel extends JPanel {
             JOptionPane optionPane = new TermsCheck();
             JDialog dialog = optionPane.createDialog("Términos y servicios");
             dialog.setVisible(true);
-
             String nombre = nameField.getText();
-            Integer edad = ageField.listaCadenas.getSelectedIndex();
+            int edad = ageField.listaCadenas.getSelectedIndex();
             String trabajo = occupationField.getText();
             String taxUS = casillasus ? " : " + taxField.getText() : "";
-            StringEvent se = new StringEvent(this, nombre + " : " + trabajo + " : " + edad + " : " + employedField.comboBox.getSelectedItem() + " : " + genderField.comboBox.getSelectedItem() + taxUS);
+            String info = nombre + " : " + trabajo + " : " + edad + " : " + employedField.comboBox.getSelectedItem() + " : " + genderField.comboBox.getSelectedItem() + taxUS;
+
+            // En lugar de mostrar un diálogo, puedes enviar la información al textPanel
+            StringEvent se = new StringEvent(this, info);
             stringListener.textEmited(se);
         }
     };
