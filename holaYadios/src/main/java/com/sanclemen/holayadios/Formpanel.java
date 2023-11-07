@@ -3,6 +3,7 @@ package com.sanclemen.holayadios;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 public class Formpanel extends JPanel {
 
@@ -16,8 +17,11 @@ public class Formpanel extends JPanel {
     ListPanel ageField;
     JLabel employedLabel;
     ComboPanel employedField;
+    JLabel genderLabel;
+    ComboPanel genderField;
     JLabel casillaLabel;
     JCheckBox casillaUS;
+    boolean casillasus = false;
     JLabel taxLabel;
     JTextField taxField;
     JButton okButton;
@@ -39,8 +43,18 @@ public class Formpanel extends JPanel {
             String nombre = nameField.getText();
             Integer edad = ageField.listaCadenas.getSelectedIndex();
             String trabajo = occupationField.getText();
-            StringEvent se = new StringEvent(this, nombre + ": " + trabajo + ": " + edad + ": " + employedField.comboBox.getSelectedItem() + "\n");
+            String taxUS = casillasus ? " : " + taxField.getText() : "";
+            StringEvent se = new StringEvent(this, nombre + " : " + trabajo + " : " + edad + " : " + employedField.comboBox.getSelectedItem() + " : " + genderField.comboBox.getSelectedItem() + taxUS);
             stringListener.textEmited(se);
+        }
+    };
+    ActionListener al2 = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            casillasus = !casillasus;
+            taxField.setEnabled(casillasus);
+            taxLabel.setEnabled(casillasus);
+
         }
     };
 
@@ -65,15 +79,22 @@ public class Formpanel extends JPanel {
 
         //Etiqueta y campo de employment
         employedLabel = new JLabel("Employment:");
-        casillaUS = new JCheckBox();
+        employedField = new ComboPanel("Employed", "Self-Employed", "Unemployed");
+
+        //Etiqueta y campo de gender
+        genderLabel = new JLabel("Gender:");
+        genderField = new ComboPanel("Male", "Female", "Otros");
 
         //Etiqueta y campo de uscitizen
         casillaLabel = new JLabel("US Citizen:");
-        employedField = new ComboPanel();
+        casillaUS = new JCheckBox();
+        casillaUS.addActionListener(al2);
 
         //Etiqueta y campo de uscitizen
         taxLabel = new JLabel("Tax ID:");
-        taxField = new JTextField();
+        taxField = new JTextField(13);
+        taxField.setEnabled(false);
+        taxLabel.setEnabled(false);
 
         // Botón "Ok"
         okButton = new JButton("Ok");
@@ -143,9 +164,20 @@ public class Formpanel extends JPanel {
         constraints.anchor = GridBagConstraints.NORTHWEST;
         panel.add(taxField, constraints);
 
-        // Agregar el botón "Ok"
+        //Agregar la etiqueta Tax ID y el campo del textfield
         constraints.gridx = 0;
         constraints.gridy = 6;
+
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        panel.add(genderLabel, constraints);
+
+        constraints.gridx = 1;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        panel.add(genderField, constraints);
+
+        // Agregar el botón "Ok"
+        constraints.gridx = 0;
+        constraints.gridy = 7;
         constraints.anchor = GridBagConstraints.CENTER;
         panel.add(okButton, constraints);
         add(panel);

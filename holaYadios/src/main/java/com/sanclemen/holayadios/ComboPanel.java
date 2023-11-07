@@ -10,9 +10,9 @@ public class ComboPanel extends JPanel {
 
     JComboBox comboBox;
 
-    public ComboPanel() {
+    public ComboPanel(String val1, String val2, String val3) {
 
-        String[] model = {"Employed", "Self-Employed", "Unemployed"};
+        String[] model = {val1, val2, val3};
         comboBox = new JComboBox(model);
         comboBox.setEditable(true);
         comboBox.setSelectedIndex(0);
