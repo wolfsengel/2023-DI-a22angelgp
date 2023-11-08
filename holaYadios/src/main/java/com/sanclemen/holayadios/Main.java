@@ -26,7 +26,7 @@ public class Main extends JFrame {
         formpanel.setStringListener((StringEvent se) -> {
             textPanel.appendText(se.getText());
         });
-        formpanel.setVisible(false); // Inicialmente, el formulario está oculto
+        formpanel.setVisible(false);
 
         aceptarButton = new JButton("Aceptar");
         aceptarButton.addActionListener((ActionEvent arg0) -> {
@@ -38,40 +38,8 @@ public class Main extends JFrame {
         add(textPanel, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
 
-        // Crear la barra de menú
-        JMenuBar menuBar = new JMenuBar();
-
-        // Menú "File"
-        JMenu fileMenu = new JMenu("File");
-        fileMenu.setMnemonic(KeyEvent.VK_F);
-
-        // Opción "Exit" con atajo Ctrl+E
-        JMenuItem exitMenuItem = new JMenuItem("Exit", KeyEvent.VK_E);
-        exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-        exitMenuItem.addActionListener((ActionEvent e) -> {
-            System.exit(0); // Cierra la aplicación
-        });
-
-        fileMenu.add(exitMenuItem);
-
-        // Menú "View"
-        JMenu viewMenu = new JMenu("View");
-        viewMenu.setMnemonic(KeyEvent.VK_V);
-
-        // CheckBox "Person Form" con atajo Ctrl+P
-        JCheckBoxMenuItem personFormMenuItem = new JCheckBoxMenuItem("Person Form");
-        personFormMenuItem.setMnemonic(KeyEvent.VK_P);
-        personFormMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
-        personFormMenuItem.addActionListener((ActionEvent e) -> {
-            formpanel.setVisible(personFormMenuItem.isSelected());
-        });
-
-        viewMenu.add(personFormMenuItem);
-
-        menuBar.add(fileMenu);
-        menuBar.add(viewMenu);
-
-        setJMenuBar(menuBar);
+        MenuBarPanel bar = new MenuBarPanel(formpanel);
+        setJMenuBar(bar);
 
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
