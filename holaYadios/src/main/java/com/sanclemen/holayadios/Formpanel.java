@@ -3,7 +3,6 @@ package com.sanclemen.holayadios;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class Formpanel extends JPanel {
 
@@ -25,6 +24,7 @@ public class Formpanel extends JPanel {
     JLabel taxLabel;
     JTextField taxField;
     JButton okButton;
+    boolean agreedTerms = false;
 
     StringListener stringListener;
 
@@ -32,24 +32,44 @@ public class Formpanel extends JPanel {
         this.stringListener = stringListener;
     }
 
+    //Controlador upload persona
     ActionListener al = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            if (!agreedTerms) {
+                JCheckBox chk = new JCheckBox("Acepto los terminos y condiciones");
+                String msg = "Tenemos politicas de privacidad y tal";
+                JButton btn = new JButton("Acepto");
+                btn.setEnabled(false);
+                ActionListener al3 = (ActionEvent ae) -> {
+                    btn.setEnabled(chk.isSelected());
+                };
+                ActionListener al4 = (ActionEvent ae) -> {
+                    Window window = SwingUtilities.getWindowAncestor((Component) ae.getSource());
+                    if (window != null) {
+                        window.dispose();
+                    }
+                };
+                btn.addActionListener(al4);
+                chk.addActionListener(al3);
+                Object[] msgContent = {msg, chk, btn};
+                JOptionPane.showOptionDialog(Formpanel.this, msgContent, "Terminos y condiciones?", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
+                agreedTerms = chk.isSelected();
+            } else if (agreedTerms) {
+                String nombre = nameField.getText();
+                int edad = ageField.listaCadenas.getSelectedIndex();
+                String trabajo = occupationField.getText();
+                String taxUS = casillasus ? " : " + taxField.getText() : "";
+                String info = nombre + " : " + trabajo + " : " + edad + " : " + employedField.comboBox.getSelectedItem() + " : " + genderField.comboBox.getSelectedItem() + taxUS;
 
-            JOptionPane optionPane = new TermsCheck();
-            JDialog dialog = optionPane.createDialog("Términos y servicios");
-            dialog.setVisible(true);
-            String nombre = nameField.getText();
-            int edad = ageField.listaCadenas.getSelectedIndex();
-            String trabajo = occupationField.getText();
-            String taxUS = casillasus ? " : " + taxField.getText() : "";
-            String info = nombre + " : " + trabajo + " : " + edad + " : " + employedField.comboBox.getSelectedItem() + " : " + genderField.comboBox.getSelectedItem() + taxUS;
+                StringEvent se = new StringEvent(this, info);
+                stringListener.textEmited(se);
+            }
 
-            // En lugar de mostrar un diálogo, puedes enviar la información al textPanel
-            StringEvent se = new StringEvent(this, info);
-            stringListener.textEmited(se);
         }
     };
+    //fin de esto wacho
+
     ActionListener al2 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {

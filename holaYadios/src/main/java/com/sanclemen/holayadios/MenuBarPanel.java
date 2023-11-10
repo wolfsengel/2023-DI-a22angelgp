@@ -5,7 +5,6 @@
 package com.sanclemen.holayadios;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 /**
@@ -40,7 +39,6 @@ public class MenuBarPanel extends JMenuBar {
         fileMenu.add(loadPersonMenuItem);
         fileMenu.add(exitMenuItem);
 
-        // VIEW MENU
         JMenu viewMenu = new JMenu("View");
         viewMenu.setMnemonic(KeyEvent.VK_V);
 
