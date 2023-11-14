@@ -26,12 +26,6 @@ public class Formpanel extends JPanel {
     JButton okButton;
     boolean agreedTerms = false;
 
-    StringListener stringListener;
-
-    public void setStringListener(StringListener stringListener) {
-        this.stringListener = stringListener;
-    }
-
     //Controlador upload persona
     ActionListener al = new ActionListener() {
         @Override
@@ -56,14 +50,26 @@ public class Formpanel extends JPanel {
                 JOptionPane.showOptionDialog(Formpanel.this, msgContent, "Terminos y condiciones?", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
                 agreedTerms = chk.isSelected();
             } else if (agreedTerms) {
+
+                FormEvent fe = new FormEvent(nameField.getText(),
+                        occupationField.getText(),
+                        ageField.listaCadenas.getSelectedIndex(),
+                        employedField.comboBox.getSelectedIndex(),
+                        taxField.getText(),
+                        casillasus,
+                        genderField.comboBox.getSelectedIndex(),
+                        this
+                );
+
+                /*
                 String nombre = nameField.getText();
                 int edad = ageField.listaCadenas.getSelectedIndex();
                 String trabajo = occupationField.getText();
                 String taxUS = casillasus ? " : " + taxField.getText() : "";
                 String info = nombre + " : " + trabajo + " : " + edad + " : " + employedField.comboBox.getSelectedItem() + " : " + genderField.comboBox.getSelectedItem() + taxUS;
-
                 StringEvent se = new StringEvent(this, info);
                 stringListener.textEmited(se);
+                 */
             }
 
         }

@@ -4,7 +4,6 @@ import com.sanclemen.holayadios.FormEvent;
 import com.sanclemen.holayadios.model.*;
 
 public class Controller {
-// Garda unha referencia á base de datos
 
     private Database db = new Database();
 
@@ -14,13 +13,13 @@ public class Controller {
         String name = ev.getName();
         String occupation = ev.getOccupation();
         int ageCatId = ev.getAgeCategory();
-        String empCat = ev.getEmploymentCategory();
+        int empCat = ev.getEmployCategory();
         AgeCategory ageCategory;
-        String gender = ev.getGenderCategory;
+        int gender = ev.getGender();
         Gender genderCategory;
 
-        String taxId = ev.gettaxId;
-        boolean usCitizen = ev.getCitizenship;
+        String taxId = ev.getTaxId();
+        boolean usCitizen = ev.isUsCitizen();
 
         ageCategory = switch (ageCatId) {
             case 0 ->
@@ -34,27 +33,29 @@ public class Controller {
         };
         EmploymentCategory empCategory;
         empCategory = switch (empCat) {
-            case "employed" ->
+            case 0 ->
                 EmploymentCategory.EMPLOYED;
-            case "umemployed" ->
+            case 1 ->
                 EmploymentCategory.UNEMPLOYED;
-            case "selfemployed" ->
+            case 2 ->
                 EmploymentCategory.SELFEMPLOYED;
             default ->
                 EmploymentCategory.OTHER;
         };
 
         genderCategory = switch (gender) {
-            case "male" ->
+            case 0 ->
                 Gender.MALE;
-            case "female" ->
+            case 1 ->
                 Gender.FEMALE;
+            case 2 ->
+                Gender.OTHER;
             default ->
                 Gender.OTHER;
         };
 
         Person person = new Person(id, name, occupation, ageCategory, empCategory, taxId, usCitizen, genderCategory);
-
         db.addPerson(person);
+
     }
 }

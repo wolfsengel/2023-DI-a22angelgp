@@ -23,9 +23,7 @@ public class Main extends JFrame {
         });
 
         formpanel = new Formpanel();
-        formpanel.setStringListener((StringEvent se) -> {
-            textPanel.appendText(se.getText());
-        });
+
         formpanel.setVisible(false);
 
         aceptarButton = new JButton("Aceptar");
