@@ -26,6 +26,12 @@ public class Formpanel extends JPanel {
     JButton okButton;
     boolean agreedTerms = false;
 
+    FormListener formListener;
+
+    public void setFormListener(FormListener formListener) {
+        this.formListener = formListener;
+    }
+
     //Controlador upload persona
     ActionListener al = new ActionListener() {
         @Override
@@ -60,6 +66,12 @@ public class Formpanel extends JPanel {
                         genderField.comboBox.getSelectedIndex(),
                         this
                 );
+
+                formListener.personEmited(fe);
+
+                nameField.setText("");
+                occupationField.setText("");
+                taxField.setText("");
 
                 /*
                 String nombre = nameField.getText();

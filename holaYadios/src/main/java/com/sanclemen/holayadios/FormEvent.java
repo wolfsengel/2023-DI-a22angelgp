@@ -102,4 +102,11 @@ public class FormEvent extends EventObject {
     public void setGender(int gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        var taxid = taxId.equals("") ? "" : ", taxId=" + taxId;
+        return "id=" + id + ", name=" + name + ", occupation=" + occupation + ", ageCategory=" + ageCategory + ", employCategory=" + employCategory + taxid + ", usCitizen=" + usCitizen + ", gender=" + gender + "\n";
+    }
+
 }
