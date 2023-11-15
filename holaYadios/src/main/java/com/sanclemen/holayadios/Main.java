@@ -13,8 +13,8 @@ public class Main extends JFrame {
     private final JButton aceptarButton;
     private TablePanel tablePanel;
     private Controller controller;
-    private Database db;
-    private JFileChooser fileChooser;
+    private final Database db;
+    private final JFileChooser fileChooser;
 
     public Main() {
         super("Hola Mundo");
@@ -35,6 +35,7 @@ public class Main extends JFrame {
 
         controller = new Controller();
         db = controller.db;
+        tablePanel.setData(db.getPeople());
         /*formpanel.setFormListener((FormEvent fe) -> {
 
             textPanel.appendText(fe.toString());
@@ -43,7 +44,6 @@ public class Main extends JFrame {
 
         formpanel.setFormListener((FormEvent ev) -> {
             controller.addPerson(ev);
-            tablePanel.setData(db.getPeople());
             tablePanel.refresh();
         });
 
