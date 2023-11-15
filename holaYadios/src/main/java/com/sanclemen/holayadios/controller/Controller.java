@@ -2,10 +2,20 @@ package com.sanclemen.holayadios.controller;
 
 import com.sanclemen.holayadios.FormEvent;
 import com.sanclemen.holayadios.model.*;
+import java.io.File;
+import java.io.IOException;
 
 public class Controller {
 
     public Database db = new Database();
+
+    public void saveToFile(File file) throws IOException {
+        db.saveToFile(file);
+    }
+
+    public void loadFromFile(File file) throws IOException {
+        db.loadFromFile(file);
+    }
 
     public void addPerson(FormEvent ev) {
 
