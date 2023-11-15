@@ -1,7 +1,8 @@
 package com.sanclemen.holayadios;
 
+import com.sanclemen.holayadios.controller.Controller;
+import com.sanclemen.holayadios.model.Database;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public class Main extends JFrame {
@@ -10,6 +11,9 @@ public class Main extends JFrame {
     private final top top;
     private final Formpanel formpanel;
     private final JButton aceptarButton;
+    private TablePanel tablePanel;
+    private Controller controller;
+    private Database db;
 
     public Main() {
         super("Hola Mundo");
@@ -21,29 +25,39 @@ public class Main extends JFrame {
         top.setStringListener((StringEvent se) -> {
             textPanel.appendText(se.getText());
         });
+        tablePanel = new TablePanel();
 
         formpanel = new Formpanel();
         formpanel.setVisible(false);
-        formpanel.setFormListener((FormEvent fe) -> {
+
+        controller = new Controller();
+        db = controller.db;
+        /*formpanel.setFormListener((FormEvent fe) -> {
 
             textPanel.appendText(fe.toString());
 
+        });*/
+
+        formpanel.setFormListener((FormEvent ev) -> {
+            controller.addPerson(ev);
+            tablePanel.setData(db.getPeople());
+            tablePanel.refresh();
         });
 
-        aceptarButton = new JButton("Aceptar");
+        aceptarButton = new JButton("Aceptar");/*
         aceptarButton.addActionListener((ActionEvent arg0) -> {
             textPanel.appendText("\nAceptado");
-        });
+        });*/
 
         add(formpanel, BorderLayout.WEST);
         add(top, BorderLayout.PAGE_START);
-        add(textPanel, BorderLayout.CENTER);
+        add(tablePanel, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
 
         MenuBarPanel bar = new MenuBarPanel(formpanel);
         setJMenuBar(bar);
 
-        setSize(600, 500);
+        setSize(1000, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

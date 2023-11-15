@@ -5,7 +5,7 @@ import com.sanclemen.holayadios.model.*;
 
 public class Controller {
 
-    private Database db = new Database();
+    public Database db = new Database();
 
     public void addPerson(FormEvent ev) {
 
