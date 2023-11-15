@@ -14,6 +14,7 @@ public class Main extends JFrame {
     private TablePanel tablePanel;
     private Controller controller;
     private Database db;
+    private JFileChooser fileChooser;
 
     public Main() {
         super("Hola Mundo");
@@ -29,6 +30,8 @@ public class Main extends JFrame {
 
         formpanel = new Formpanel();
         formpanel.setVisible(false);
+
+        fileChooser = new JFileChooser();
 
         controller = new Controller();
         db = controller.db;
@@ -54,7 +57,7 @@ public class Main extends JFrame {
         add(tablePanel, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
 
-        MenuBarPanel bar = new MenuBarPanel(formpanel);
+        MenuBarPanel bar = new MenuBarPanel(formpanel, fileChooser, controller, tablePanel);
         setJMenuBar(bar);
 
         setSize(1000, 500);

@@ -4,8 +4,10 @@
  */
 package com.sanclemen.holayadios;
 
+import com.sanclemen.holayadios.controller.Controller;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 /**
  *
@@ -13,7 +15,7 @@ import java.awt.event.*;
  */
 public class MenuBarPanel extends JMenuBar {
 
-    public MenuBarPanel(Formpanel formpanel) {
+    public MenuBarPanel(Formpanel formpanel, JFileChooser fileChooser, Controller controller, TablePanel tablePanel) {
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
 
@@ -26,13 +28,24 @@ public class MenuBarPanel extends JMenuBar {
         JMenuItem savePersonMenuItem = new JMenuItem("Save Person", KeyEvent.VK_S);
         savePersonMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
         savePersonMenuItem.addActionListener((ActionEvent e) -> {
-            //TODO: IMPLEMENT
+            if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                try {
+                    controller.saveToFile(fileChooser.getSelectedFile());
+                } catch (IOException exx) {
+                }
+            }
         });
 
         JMenuItem loadPersonMenuItem = new JMenuItem("Load Person", KeyEvent.VK_P);
         loadPersonMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
         loadPersonMenuItem.addActionListener((ActionEvent e) -> {
-            //TODO: IMPLEMENT
+            if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                try {
+                    controller.loadFromFile(fileChooser.getSelectedFile());
+                    tablePanel.refresh();
+                } catch (IOException ex) {
+                }
+            }
         });
 
         fileMenu.add(savePersonMenuItem);

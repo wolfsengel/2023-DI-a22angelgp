@@ -1,6 +1,10 @@
 package com.sanclemen.holayadios.model;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
+
+    private static final long serialVersionUID = 1234L;
 
     static int count = 0;
     int id;
