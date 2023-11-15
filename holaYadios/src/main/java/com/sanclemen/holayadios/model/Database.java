@@ -38,7 +38,9 @@ public class Database {
         ObjectInputStream ois = new ObjectInputStream(fis);
         try {
             people.clear();
-            people.addAll((LinkedList<Person>) ois.readObject());
+            LinkedList<Person> list = (LinkedList<Person>) ois.readObject();
+            people.addAll(list);
+            Person.count = list.size();
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
