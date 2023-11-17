@@ -39,7 +39,7 @@ public class Database {
                 people.clear();
                 LinkedList<Person> list = (LinkedList<Person>) ois.readObject();
                 people.addAll(list);
-                Person.count = (Integer) people.get(people.size() - 1).getId() + 1;
+                Person.count = list.get(list.size() - 1).getId() + 1;
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);

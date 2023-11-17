@@ -37,7 +37,7 @@ public class Formpanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (agreedTerms) {
-
+                int aux = 0;
                 FormEvent fe = new FormEvent(nameField.getText(),
                         occupationField.getText(),
                         ageField.listaCadenas.getSelectedIndex(),
@@ -46,8 +46,10 @@ public class Formpanel extends JPanel {
                         casillasus,
                         genderField.comboBox.getSelectedIndex(),
                         this
-                );
 
+                );
+                aux = fe.getId();
+                System.out.println(aux);
                 formListener.personEmited(fe);
 
                 nameField.setText("");

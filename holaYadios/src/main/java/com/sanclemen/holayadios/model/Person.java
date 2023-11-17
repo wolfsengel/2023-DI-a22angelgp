@@ -17,7 +17,7 @@ public class Person implements Serializable {
     Gender gender;
 
     public Person(int id, String name, String occupation, AgeCategory ageCategory, EmploymentCategory employCategory, String taxId, boolean usCitizen, Gender gender) {
-        this.id = id;
+        this.id = count;
         this.name = name;
         this.occupation = occupation;
         this.ageCategory = ageCategory;
