@@ -36,26 +36,7 @@ public class Formpanel extends JPanel {
     ActionListener al = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (!agreedTerms) {
-                JCheckBox chk = new JCheckBox("Acepto los terminos y condiciones");
-                String msg = "Tenemos politicas de privacidad y tal";
-                JButton btn = new JButton("Acepto");
-                btn.setEnabled(false);
-                ActionListener al3 = (ActionEvent ae) -> {
-                    btn.setEnabled(chk.isSelected());
-                };
-                ActionListener al4 = (ActionEvent ae) -> {
-                    Window window = SwingUtilities.getWindowAncestor((Component) ae.getSource());
-                    if (window != null) {
-                        window.dispose();
-                    }
-                };
-                btn.addActionListener(al4);
-                chk.addActionListener(al3);
-                Object[] msgContent = {msg, chk, btn};
-                JOptionPane.showOptionDialog(Formpanel.this, msgContent, "Terminos y condiciones?", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
-                agreedTerms = chk.isSelected();
-            } else if (agreedTerms) {
+            if (agreedTerms) {
 
                 FormEvent fe = new FormEvent(nameField.getText(),
                         occupationField.getText(),
@@ -99,6 +80,28 @@ public class Formpanel extends JPanel {
     };
 
     Formpanel() {
+
+        if (!agreedTerms) {
+            JCheckBox chk = new JCheckBox("Acepto los terminos y condiciones");
+            String msg = "Tenemos politicas de privacidad y tal";
+            JButton btn = new JButton("Acepto");
+            btn.setEnabled(false);
+            ActionListener al3 = (ActionEvent ae) -> {
+                btn.setEnabled(chk.isSelected());
+            };
+            ActionListener al4 = (ActionEvent ae) -> {
+                Window window = SwingUtilities.getWindowAncestor((Component) ae.getSource());
+                if (window != null) {
+                    window.dispose();
+                }
+            };
+            btn.addActionListener(al4);
+            chk.addActionListener(al3);
+            Object[] msgContent = {msg, chk, btn};
+            JOptionPane.showOptionDialog(Formpanel.this, msgContent, "Terminos y condiciones?", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
+            agreedTerms = chk.isSelected();
+        }
+
         panel = new JPanel(new GridBagLayout());
         constraints = new GridBagConstraints();
 

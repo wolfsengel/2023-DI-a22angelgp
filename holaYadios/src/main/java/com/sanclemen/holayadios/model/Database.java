@@ -25,27 +25,27 @@ public class Database {
     }
 
     public void saveToFile(File file) throws IOException {
-        FileOutputStream fos = new FileOutputStream(file);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(people);
-        oos.close();
-        fos.close();
+        try (FileOutputStream fos = new FileOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(people);
+        }
     }
 
     public void loadFromFile(File file) throws IOException {
 
-        FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        try {
-            people.clear();
-            LinkedList<Person> list = (LinkedList<Person>) ois.readObject();
-            people.addAll(list);
-            Person.count = list.size();
+        ObjectInputStream ois;
+        try (FileInputStream fis = new FileInputStream(file)) {
+            ois = new ObjectInputStream(fis);
+            try {
+                people.clear();
+                LinkedList<Person> list = (LinkedList<Person>) ois.readObject();
+                people.addAll(list);
+                Person.count = (Integer) people.get(people.size() - 1).getId() + 1;
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
-        fis.close();
         ois.close();
     }
 }

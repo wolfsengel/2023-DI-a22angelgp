@@ -6,7 +6,7 @@ public class Person implements Serializable {
 
     private static final long serialVersionUID = 1234L;
 
-    static int count = 0;
+    public static int count;
     int id;
     String name;
     String occupation;
