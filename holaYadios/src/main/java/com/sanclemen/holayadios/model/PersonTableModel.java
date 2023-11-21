@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.sanclemen.holayadios.model;
 
 import java.util.List;
@@ -18,9 +14,13 @@ public class PersonTableModel extends AbstractTableModel {
 
     public void setData(List<Person> personList) {
         this.personList = personList;
-        // Notify the table that the data has changed, so it can be redrawn
         fireTableDataChanged();
     }
+    public void removePerson(int rowIndex) {
+        this.personList.remove(rowIndex);
+        fireTableRowsDeleted(rowIndex, rowIndex);
+    }
+
 
     @Override
     public int getRowCount() {
@@ -30,7 +30,6 @@ public class PersonTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        // The number of columns is equal to the length of the columnNames array
         return columnNames.length;
     }
 
@@ -42,7 +41,6 @@ public class PersonTableModel extends AbstractTableModel {
 
         Person person = personList.get(row);
 
-        // Now, based on the column index, return the corresponding value from the Person object
         switch (column) {
             case 0:
                 return person.getId();
@@ -61,7 +59,7 @@ public class PersonTableModel extends AbstractTableModel {
             case 7:
                 return person.getGender();
             default:
-                return null; // Return null for unknown columns
+                return null;
         }
     }
 
