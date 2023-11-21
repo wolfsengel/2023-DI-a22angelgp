@@ -57,15 +57,6 @@ public class Formpanel extends JPanel {
                 occupationField.setText("");
                 taxField.setText("");
 
-                /*
-                String nombre = nameField.getText();
-                int edad = ageField.listaCadenas.getSelectedIndex();
-                String trabajo = occupationField.getText();
-                String taxUS = casillasus ? " : " + taxField.getText() : "";
-                String info = nombre + " : " + trabajo + " : " + edad + " : " + employedField.comboBox.getSelectedItem() + " : " + genderField.comboBox.getSelectedItem() + taxUS;
-                StringEvent se = new StringEvent(this, info);
-                stringListener.textEmited(se);
-                 */
             }
 
         }
