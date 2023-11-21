@@ -1,5 +1,7 @@
 package com.sanclemen.holayadios;
 
+import com.sanclemen.holayadios.model.Person;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -46,12 +48,11 @@ public class Formpanel extends JPanel {
                         casillasus,
                         genderField.comboBox.getSelectedIndex(),
                         this
-
                 );
                 aux = fe.getId();
                 System.out.println(aux);
                 formListener.personEmited(fe);
-
+                Person.count++;
                 nameField.setText("");
                 occupationField.setText("");
                 taxField.setText("");
