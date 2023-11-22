@@ -16,6 +16,7 @@ public class TablePanel extends JPanel {
     private JTable table;
     private PersonTableModel personTableModel;
     private JPopupMenu popupMenu;
+    private PersonTableListener personTableListener;
 
     public TablePanel() {
         personTableModel = new PersonTableModel();
@@ -27,9 +28,9 @@ public class TablePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = table.getSelectedRow();
-                if (selectedRow != -1) {
-                    personTableModel.removePerson(selectedRow);
-                    refresh();
+                if (personTableListener != null) {
+                    personTableListener.rowDeleted(selectedRow);
+                    personTableModel.fireTableRowsDeleted(selectedRow, selectedRow);
                 }
             }
         });
