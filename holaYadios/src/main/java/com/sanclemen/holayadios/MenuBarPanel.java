@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class MenuBarPanel extends JMenuBar {
 
-    public MenuBarPanel(Formpanel formpanel, JFileChooser fileChooser, Controller controller, TablePanel tablePanel) {
+    public MenuBarPanel(Formpanel formpanel,JSplitPane jSplitPane, JFileChooser fileChooser, Controller controller, TablePanel tablePanel) {
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
 
@@ -62,6 +62,7 @@ public class MenuBarPanel extends JMenuBar {
         personFormMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
         personFormMenuItem.addActionListener((ActionEvent e) -> {
             formpanel.setVisible(personFormMenuItem.isSelected());
+            jSplitPane.resetToPreferredSizes();
         });
 
         viewMenu.add(personFormMenuItem);

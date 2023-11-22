@@ -29,18 +29,13 @@ public class Main extends JFrame {
         tablePanel = new TablePanel();
 
         formpanel = new Formpanel();
-        formpanel.setVisible(false);
+        //formpanel.setVisible(false);
 
         fileChooser = new JFileChooser();
 
         controller = new Controller();
         db = controller.db;
         tablePanel.setData(db.getPeople());
-        /*formpanel.setFormListener((FormEvent fe) -> {
-
-            textPanel.appendText(fe.toString());
-
-        });*/
 
         formpanel.setFormListener((FormEvent ev) -> {
             controller.addPerson(ev);
@@ -52,18 +47,20 @@ public class Main extends JFrame {
             tablePanel.refresh();
         });
 
-        aceptarButton = new JButton("Aceptar");/*
-        aceptarButton.addActionListener((ActionEvent arg0) -> {
-            textPanel.appendText("\nAceptado");
-        });*/
+        aceptarButton = new JButton("Aceptar");
 
-        add(formpanel, BorderLayout.WEST);
+
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,formpanel ,tablePanel);
+        splitPane.setResizeWeight(0.5);
+
+        //add(formpanel, BorderLayout.WEST);
         add(top, BorderLayout.PAGE_START);
-        add(tablePanel, BorderLayout.CENTER);
+        add(splitPane, BorderLayout.CENTER);
         add(aceptarButton, BorderLayout.PAGE_END);
 
-        MenuBarPanel bar = new MenuBarPanel(formpanel, fileChooser, controller, tablePanel);
-        setJMenuBar(bar);
+        MenuBarPanel bari = new MenuBarPanel(formpanel, splitPane,fileChooser, controller, tablePanel);
+        setJMenuBar(bari);
 
         setSize(1000, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
