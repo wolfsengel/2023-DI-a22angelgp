@@ -2,6 +2,7 @@ package com.sanclemen.holayadios;
 
 import com.sanclemen.holayadios.controller.Controller;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.*;
 import java.io.IOException;
 
@@ -21,6 +22,9 @@ public class MenuBarPanel extends JMenuBar {
             System.exit(0);
         });
 
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos .per", "per");
+        fileChooser.setFileFilter(filter);
+
         JMenuItem savePersonMenuItem = new JMenuItem("Save Person", KeyEvent.VK_S);
         savePersonMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
         savePersonMenuItem.addActionListener((ActionEvent e) -> {
@@ -28,6 +32,7 @@ public class MenuBarPanel extends JMenuBar {
                 try {
                     controller.saveToFile(fileChooser.getSelectedFile());
                 } catch (IOException exx) {
+                    exx.printStackTrace();  // Manejo de errores básico, imprime la traza de la excepción
                 }
             }
         });
@@ -40,6 +45,7 @@ public class MenuBarPanel extends JMenuBar {
                     controller.loadFromFile(fileChooser.getSelectedFile());
                     tablePanel.refresh();
                 } catch (IOException ex) {
+                    ex.printStackTrace();  // Manejo de errores básico, imprime la traza de la excepción
                 }
             }
         });

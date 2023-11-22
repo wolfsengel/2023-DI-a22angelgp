@@ -17,6 +17,9 @@ public class TablePanel extends JPanel {
     private PersonTableModel personTableModel;
     private JPopupMenu popupMenu;
     private PersonTableListener personTableListener;
+    public void setPersonTableListener(PersonTableListener personTableListener) {
+        this.personTableListener = personTableListener;
+    }
 
     public TablePanel() {
         personTableModel = new PersonTableModel();

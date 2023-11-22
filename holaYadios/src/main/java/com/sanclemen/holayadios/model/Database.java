@@ -48,4 +48,8 @@ public class Database {
         }
         ois.close();
     }
+
+    public void removePerson(int row) {
+        people.remove(row);
+    }
 }

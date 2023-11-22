@@ -47,6 +47,11 @@ public class Main extends JFrame {
             tablePanel.refresh();
         });
 
+        tablePanel.setPersonTableListener((int row) -> {
+            controller.removePerson(row);
+            tablePanel.refresh();
+        });
+
         aceptarButton = new JButton("Aceptar");/*
         aceptarButton.addActionListener((ActionEvent arg0) -> {
             textPanel.appendText("\nAceptado");
