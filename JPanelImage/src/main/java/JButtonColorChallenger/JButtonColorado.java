@@ -2,17 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package JButtonColorado;
+package JButtonColorChallenger;
 
 import java.awt.Color;
 import java.io.Serializable;
-import javax.swing.JButton;
 
 /**
  *
  * @author a22angelgp
  */
-public class JButtonColorado extends JButton implements Serializable {
+public class JButtonColorado implements Serializable {
 
     private Color fondo;
     private Color letra;
@@ -23,8 +22,6 @@ public class JButtonColorado extends JButton implements Serializable {
 
     public void setFondo(Color fondo) {
         this.fondo = fondo;
-        this.setBackground(fondo);
-        repaint();
     }
 
     public Color getLetra() {
@@ -33,8 +30,11 @@ public class JButtonColorado extends JButton implements Serializable {
 
     public void setLetra(Color letra) {
         this.letra = letra;
-        this.setForeground(letra);
-        repaint();
+    }
+
+    public JButtonColorado(Color fondo, Color letra) {
+        this.fondo = fondo;
+        this.letra = letra;
     }
 
     public JButtonColorado() {

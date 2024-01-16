@@ -1,4 +1,4 @@
-package JButtonColorado;
+package JButtonColorChallenger;
 
 import java.awt.Graphics;
 import java.io.Serializable;
@@ -33,6 +33,7 @@ public class JButtonColoreado extends JButton implements Serializable {
             if (buttonC.getLetra() != null) {
                 this.setForeground(buttonC.getLetra());
             }
+            repaint();
         }
 
     }

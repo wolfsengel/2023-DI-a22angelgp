@@ -2,7 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package JButtonColorado;
+package JButtonColorChallenger;
+
+import com.sanclemen.jpanelimage.ImaxeFondo;
+import java.awt.Color;
+import java.io.File;
+import javax.swing.JColorChooser;
 
 /**
  *
@@ -55,8 +60,18 @@ public class JButtonFondoPanel extends javax.swing.JPanel {
         jLabel3.setText("Colores");
 
         jButton1.setText("...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("...");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -65,9 +80,7 @@ public class JButtonFondoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -110,6 +123,33 @@ public class JButtonFondoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Color color = JColorChooser.showDialog(this, "Elige un color", Color.BLACK);
+        jTextField1.setText(color.toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Color color = JColorChooser.showDialog(this, "Elige un color", Color.BLACK);
+        jTextField2.setText(color.toString());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public JButtonColorado getSelectedValue() {
+        String colorFondo = jTextField1.getText();
+        colorFondo = colorFondo.replace("[", "");
+        colorFondo = colorFondo.replace("]", "");
+        String letraFondo = jTextField2.getText();
+        letraFondo = letraFondo.replace("[", " ");
+        letraFondo = letraFondo.replace("]", " ");
+        String[] lstFondo = colorFondo.split(",");
+        String[] lstLetra = letraFondo.split(",");
+
+        Color fondo = new Color(Float.parseFloat(lstFondo[0]), Float.parseFloat(lstFondo[1]), Float.parseFloat(lstFondo[2]));
+        Color letra = new Color(Float.parseFloat(lstLetra[0]), Float.parseFloat(lstLetra[1]), Float.parseFloat(lstLetra[2]));
+
+        return new JButtonColorado(fondo, letra);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
