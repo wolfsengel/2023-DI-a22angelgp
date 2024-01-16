@@ -4,10 +4,40 @@
  */
 package JButtonColorado;
 
+import java.awt.Color;
+import java.io.Serializable;
+import javax.swing.JButton;
+
 /**
  *
  * @author a22angelgp
  */
-public class JButtonColorado {
+public class JButtonColorado extends JButton implements Serializable {
+
+    private Color fondo;
+    private Color letra;
+
+    public Color getFondo() {
+        return fondo;
+    }
+
+    public void setFondo(Color fondo) {
+        this.fondo = fondo;
+        this.setBackground(fondo);
+        repaint();
+    }
+
+    public Color getLetra() {
+        return letra;
+    }
+
+    public void setLetra(Color letra) {
+        this.letra = letra;
+        this.setForeground(letra);
+        repaint();
+    }
+
+    public JButtonColorado() {
+    }
 
 }
