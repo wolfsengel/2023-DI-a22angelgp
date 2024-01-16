@@ -24,7 +24,7 @@ public class ImaxeFondoPropertyEditorSupport extends PropertyEditorSupport {
     @Override
     public String getJavaInitializationString() {
         ImaxeFondo imaxeFondo = imaxeFondoPanel.getSelectedValue();
-        return "new com.mycompany.jpanelimaxe.ImaxeFondo(" + "new java.io.File(\""
+        return "new com.sanclemen.jpanelimage.ImaxeFondo(" + "new java.io.File(\""
                 + imaxeFondo.getFicheiroImaxe().getAbsolutePath() + "\"), " + imaxeFondo.getOpacidade()
                 + "f)";
     }
