@@ -3,6 +3,7 @@ package reloxo.dixital;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import javax.swing.JLabel;
 
 /**
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 public class JReloxo extends JLabel {
 
     private boolean formato24h = true; // Por defecto, formato de 24 horas
+    Random rd = new Random();
 
     public JReloxo() {
 // Establecer propiedades del JLabel
@@ -35,7 +37,7 @@ public class JReloxo extends JLabel {
 
 // Esperar un segundo antes de la próxima actualización
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(rd.nextInt(100));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

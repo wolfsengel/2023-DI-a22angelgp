@@ -4,10 +4,12 @@
  */
 package reloxo.dixital;
 
+import java.beans.PropertyEditorSupport;
+
 /**
  *
  * @author a22angelgp
  */
-public class JReloxoCPropertyEditorSupport {
+public class JReloxoCPropertyEditorSupport extends PropertyEditorSupport {
 
 }
