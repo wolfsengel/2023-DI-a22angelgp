@@ -4,9 +4,7 @@
  */
 package JButtonColorChallenger;
 
-import com.sanclemen.jpanelimage.ImaxeFondo;
 import java.awt.Color;
-import java.io.File;
 import javax.swing.JColorChooser;
 
 /**
@@ -136,18 +134,53 @@ public class JButtonFondoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public JButtonColorado getSelectedValue() {
-        String colorFondo = jTextField1.getText();
-        colorFondo = colorFondo.replace("[", "");
-        colorFondo = colorFondo.replace("]", "");
-        String letraFondo = jTextField2.getText();
-        letraFondo = letraFondo.replace("[", " ");
-        letraFondo = letraFondo.replace("]", " ");
-        String[] lstFondo = colorFondo.split(",");
-        String[] lstLetra = letraFondo.split(",");
 
-        Color fondo = new Color(Float.parseFloat(lstFondo[0]), Float.parseFloat(lstFondo[1]), Float.parseFloat(lstFondo[2]));
-        Color letra = new Color(Float.parseFloat(lstLetra[0]), Float.parseFloat(lstLetra[1]), Float.parseFloat(lstLetra[2]));
+        //java.awt.Color[r=0,g=102,b=102]
+        String colorFondo = jTextField1.getText().trim();
+        Color fondo = Color.BLACK;
+        if (colorFondo != null && !"".equals(colorFondo)) {
+            colorFondo = colorFondo.replace(".", "");
+            colorFondo = colorFondo.replace("=", "");
+            colorFondo = colorFondo.replace("j", "");
+            colorFondo = colorFondo.replace("a", "");
+            colorFondo = colorFondo.replace("v", "");
+            colorFondo = colorFondo.replace("w", "");
+            colorFondo = colorFondo.replace("t", "");
+            colorFondo = colorFondo.replace("C", "");
+            colorFondo = colorFondo.replace("o", "");
+            colorFondo = colorFondo.replace("r", "");
+            colorFondo = colorFondo.replace("r", "");
+            colorFondo = colorFondo.replace("l", "");
+            colorFondo = colorFondo.replace("g", "");
+            colorFondo = colorFondo.replace("b", "");
+            colorFondo = colorFondo.replace("[", "");
+            colorFondo = colorFondo.replace("]", "");
+            String[] lstFondo = colorFondo.split(",");
+            fondo = new Color(Integer.parseInt(lstFondo[0]), Integer.parseInt(lstFondo[1]), Integer.parseInt(lstFondo[2]));
+        }
 
+        Color letra = Color.BLACK;
+        String letraFondo = jTextField2.getText().trim();
+        if (letraFondo != null && !"".equals(letraFondo)) {
+            letraFondo = letraFondo.replace(".", "");
+            letraFondo = letraFondo.replace("=", "");
+            letraFondo = letraFondo.replace("j", "");
+            letraFondo = letraFondo.replace("a", "");
+            letraFondo = letraFondo.replace("v", "");
+            letraFondo = letraFondo.replace("w", "");
+            letraFondo = letraFondo.replace("t", "");
+            letraFondo = letraFondo.replace("r", "");
+            letraFondo = letraFondo.replace("l", "");
+            letraFondo = letraFondo.replace("C", "");
+            letraFondo = letraFondo.replace("o", "");
+            letraFondo = letraFondo.replace("r", "");
+            letraFondo = letraFondo.replace("g", "");
+            letraFondo = letraFondo.replace("b", "");
+            letraFondo = letraFondo.replace("[", "");
+            letraFondo = letraFondo.replace("]", "");
+            String[] lstLetra = letraFondo.split(",");
+            letra = new Color(Integer.parseInt(lstLetra[0]), Integer.parseInt(lstLetra[1]), Integer.parseInt(lstLetra[2]));
+        }
         return new JButtonColorado(fondo, letra);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

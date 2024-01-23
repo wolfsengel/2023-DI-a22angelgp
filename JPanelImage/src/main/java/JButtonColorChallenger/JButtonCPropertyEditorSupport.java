@@ -9,7 +9,7 @@ import java.beans.PropertyEditorSupport;
 
 public class JButtonCPropertyEditorSupport extends PropertyEditorSupport {
 
-    private final JButtonFondoPanel buttonColoreado = new JButtonFondoPanel();
+    private final JButtonFondoPanel buttonColon = new JButtonFondoPanel();
 
     @Override
     public boolean supportsCustomEditor() {
@@ -18,19 +18,21 @@ public class JButtonCPropertyEditorSupport extends PropertyEditorSupport {
 
     @Override
     public Component getCustomEditor() {
-        return buttonColoreado;
+        return buttonColon;
     }
 
     @Override
     public String getJavaInitializationString() {
-        JButtonColorado imaxeFondo = buttonColoreado.getSelectedValue();
-        return "new JButtonColorChallenger.JButtonColorado(" + "new java.awt.Color(\""
-                + imaxeFondo.getFondo() + "\"), new java.awt.Color(" + imaxeFondo.getLetra()
+        JButtonColorado imaxeFondo = buttonColon.getSelectedValue();
+        return "new JButtonColorChallenger.JButtonColorado(new java.awt.Color("
+                + imaxeFondo.getFondo().getGreen() + "," + imaxeFondo.getFondo().getBlue() + "," + imaxeFondo.getFondo().getRed()
+                + "),new java.awt.Color("
+                + imaxeFondo.getLetra().getGreen() + "," + imaxeFondo.getLetra().getBlue() + "," + imaxeFondo.getLetra().getRed()
                 + "))";
     }
 
     @Override
     public Object getValue() {
-        return buttonColoreado.getSelectedValue();
+        return buttonColon.getSelectedValue();
     }
 }
